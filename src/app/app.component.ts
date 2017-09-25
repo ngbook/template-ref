@@ -1,6 +1,6 @@
 import {
     Component, TemplateRef, ViewChild,
-    AfterViewInit, ViewContainerRef
+    AfterViewInit
   } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class AppComponent implements AfterViewInit {
     @ViewChild('tpl', {read: TemplateRef})
     tplRef: TemplateRef<any>;
 
-    constructor(private viewContainer: ViewContainerRef) { }
+    constructor() { }
 
     ngAfterViewInit() {
         if (!this.tplRef) {
@@ -33,7 +33,5 @@ export class AppComponent implements AfterViewInit {
         // 接入Angular内核的变化检测中
         viewRef.detectChanges();
 
-        // 或者直接使用下面的方法
-        this.viewContainer.createEmbeddedView(this.tplRef);
     }
 }
